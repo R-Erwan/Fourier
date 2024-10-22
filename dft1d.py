@@ -1,8 +1,13 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+"""
+-----------------------------------------------------
+Algorithme Transformé de fourier 1D normal et inverse
+-----------------------------------------------------
+"""
 
-# Fonction DFT 1D
+# Algorithme DFT 1D
 def dft(signal):
     N = len(signal)
     X = np.zeros(N, dtype=complex)  # Tableau pour stocker les coefficients de la DFT
@@ -14,7 +19,7 @@ def dft(signal):
 
     return X
 
-# Fonction IDFT 1D
+# Algorithme DFT 2D
 def idft(X):
     N = len(X)
     signal = np.zeros(N, dtype=complex)
@@ -24,14 +29,8 @@ def idft(X):
             signal[k] += X[n] * (np.cos(theta) + 1j * np.sin(theta))
     return signal / N
 
-#TODO DFT 2D
-#TODO IDFT 2D
 
-#TODO DFFT 1D
-#TODO IDFFT 1D
-#TODO DFFT 2D
-#TODO IDFFT 2D
-
+# Calculer les fréquences pour le spectre
 def calc_freq(N, dt):
     freqs = []
     for k in range(N):

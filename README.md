@@ -1,4 +1,6 @@
-# DFT Algorithme de la transformé de Fourier discrète 1D
+# DFT 1D
+
+## DFT Algorithme de la transformé de Fourier discrète 1D
 G[u] = ∑ g[x] * e( -2iπux / N ) avec u = 0..N-1
 
 ou grace a la FORMULE D'EULER
@@ -15,7 +17,7 @@ G[u] = ∑ g[x] * ( cos( 2πux / N) - i * sin( 2πux / N) ) avec u = 0..N-1
 - i nombre imaginaire
 - e(-2ieπux) facteur de rotation complexe
 
-## Algo en pseudo-code :
+### Algo en pseudo-code :
 Entré : un tableau de signal g[n] de longeur N
 
 1. Initialisé un tableau G[u] de longeur N pour stocker les résultats de la DFT
@@ -38,8 +40,52 @@ discrète de N termes, donc il faut rammener les coeff a la bonne échelle lors 
 
 ***QUESTION : Pourquoi on doit normalisé ? REPONSE :*** 
 
+# DFT 2D
 
+## DFT 2D Algo de la transformé en 2D
 
+G[u,v] = ∑∑ g[x,y] * e( -2iπ ( ux/M + vy/N ) ) 
+
+ou
+
+θ = 2 * π * ((u*x/M) + (v*y/N))
+G[u,v] = ∑ g[x,y] * ( cos(θ)  - i * sin(θ) )
+
+### Algo en pseudo-code
+
+Entrée : tableau d'image g[u,v] de taille M x N
+1. Initialisé un tableau G[u,v] avec des 0 de la même taille que g
+2. Pour chaques lignes
+   - Pour chaques colonnes
+     - Initialisé la somme pour chaques coefficients
+       - Pour chaques pixel (x,y) dans l'image
+          
+         Calcul de theta 
+            
+         Mettre a jour G[u,v] en ajoutant g[x,y] * (cos(θ) - i*sin(θ))
+       Le résultat pour G[u,v] est calculé
+3. Retourner G[u,v]
+
+## IDFT 2D Algo de la TF inverse 2D
+
+G[u,v] = ∑∑ g[x,y] * e( 2iπ ( ux/M + vy/N ) ) 
+
+ou
+
+θ = 2 * π * ((u*x/M) + (v*y/N))
+G[u,v] = ∑ g[x,y] * ( cos(θ)  + i * sin(θ) )
+
+# Transformé de fourier RAPIDE
+
+Les algos pour les transformées de fouriers rapide
+
+# DFFT 1D
+
+TODO
+
+# DFFT 2D
+
+TODO
 
 # Calcul des fréquences associées à la DFT
 
